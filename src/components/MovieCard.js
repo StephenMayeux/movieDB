@@ -24,6 +24,7 @@ class MovieCard extends Component {
     this.hideDelete = this.hideDelete.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(event) {
@@ -39,6 +40,10 @@ class MovieCard extends Component {
     this.hideEdit();
   }
 
+  handleDelete() {
+
+  }
+
   showEdit() {
     this.setState({ showEdit: true });
   }
@@ -52,7 +57,7 @@ class MovieCard extends Component {
   }
 
   hideDelete() {
-    this.setState({ showEdit: false });
+    this.setState({ showDelete: false });
   }
 
   render() {
@@ -79,6 +84,16 @@ class MovieCard extends Component {
             Delete
           </button>
         </div>
+
+        <Modal show={this.state.showDelete} onHide={this.hideDelete}>
+          <Modal.Header closeButton>
+            {`Delete ${title}?`}
+          </Modal.Header>
+          <Modal.Body>
+            <p>Are you sure you want to delete this movie? This action is irreversible!</p>
+            <button onClick={this.handleDelete} className="btn btn-danger btn-block">DELETE</button>
+          </Modal.Body>
+        </Modal>
 
         <Modal show={this.state.showEdit} onHide={this.hideEdit}>
           <Modal.Header closeButton>
