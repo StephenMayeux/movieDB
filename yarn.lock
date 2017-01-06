@@ -2460,6 +2460,10 @@ sha.js@2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.2.6.tgz#17ddeddc5f722fb66501658895461977867315ba"
 
+shortid@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.6.tgz#3abbefc6c51074cf2c1f1e72f6216a1b45876d72"
+
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
