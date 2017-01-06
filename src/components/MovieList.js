@@ -4,6 +4,7 @@ import _ from 'lodash';
 
 import * as actions from '../actions';
 import MovieCard from './MovieCard';
+import Search from './Search';
 
 class MovieList extends Component {
   renderList() {
@@ -20,6 +21,7 @@ class MovieList extends Component {
     return (
       <div className="col-md-7 col-md-offset-1">
         <h1>Movies List</h1>
+        <Search />
         {this.renderList()}
       </div>
     );

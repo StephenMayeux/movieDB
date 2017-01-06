@@ -41,7 +41,9 @@ class MovieCard extends Component {
   }
 
   handleDelete() {
-
+    const { uuid } = this.props;
+    this.props.deleteMovie(uuid);
+    this.hideDelete();
   }
 
   showEdit() {

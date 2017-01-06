@@ -1,6 +1,6 @@
 import Lockr from 'lockr';
 import _ from 'lodash';
-import { ADD_MOVIE, UPDATE_MOVIE } from './types';
+import { ADD_MOVIE, UPDATE_MOVIE, FILTER_MOVIES } from './types';
 
 const saveToStorage = (movie) => {
   let movies = Lockr.get('InMotionMovies') || [];
@@ -22,6 +22,14 @@ const editAndSaveToStorage = ({ uuid, titleEdit, genreEdit, yearEdit, castEdit, 
   Lockr.set('InMotionMovies', movies);
 };
 
+const deleteAndUpdateStorage = (uuid) => {
+  let movies = Lockr.get('InMotionMovies');
+  _.remove(movies, movie => {
+    return movie.uuid === uuid;
+  });
+  Lockr.set('InMotionMovies', movies);
+};
+
 export const saveMovie = (movie) => {
   saveToStorage(movie);
   return {
@@ -35,5 +43,20 @@ export const editMovie = ({ uuid, titleEdit, genreEdit, yearEdit, castEdit, rati
   return {
     type: UPDATE_MOVIE,
     payload: Lockr.get('InMotionMovies')
+  };
+};
+
+export const deleteMovie = (uuid) => {
+  deleteAndUpdateStorage(uuid);
+  return {
+    type: UPDATE_MOVIE,
+    payload: Lockr.get('InMotionMovies')
+  };
+};
+
+export const filterMovies = (term) => {
+  return {
+    type: FILTER_MOVIES,
+    payload: term
   };
 };
