@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
+
+import * as actions from '../actions';
 
 class MovieCard extends Component {
   constructor(props) {
@@ -20,10 +23,20 @@ class MovieCard extends Component {
     this.showDelete = this.showDelete.bind(this);
     this.hideDelete = this.hideDelete.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const { titleEdit, genreEdit, yearEdit, castEdit, ratingEdit } = this.state;
+    const { uuid } = this.props;
+    this.props.editMovie({ uuid, titleEdit, genreEdit, yearEdit, castEdit, ratingEdit });
+    this.hideEdit();
   }
 
   showEdit() {
@@ -154,4 +167,4 @@ class MovieCard extends Component {
   }
 }
 
-export default MovieCard;
+export default connect(null, actions)(MovieCard);
