@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Modal } from 'react-bootstrap';
 
 import * as actions from '../actions';
 import MovieCard from './MovieCard';
