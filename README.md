@@ -8,4 +8,4 @@ A CRUD application built with React and Redux. Learn about your favorite movies!
 
 2. Inside the project directory, run `npm start`.
 
-3. Open up Chrome, and go to localhost on port 3000.
+3. Open up Chrome, and go to localhost on port 8080.
