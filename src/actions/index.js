@@ -8,6 +8,7 @@ const saveToStorage = (movie) => {
 };
 
 export const saveMovie = (movie) => {
+  saveToStorage(movie);
   return {
     type: ADD_MOVIE,
     payload: movie
