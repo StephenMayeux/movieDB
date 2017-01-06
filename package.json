@@ -19,11 +19,14 @@
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
+    "lockr": "^0.8.4",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "redux-logger": "^2.7.4"
   }
 }
