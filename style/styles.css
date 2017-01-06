@@ -5,3 +5,7 @@ body {
 h1 {
   padding-bottom: 20px;
 }
+
+.strong {
+  font-weight: bold;
+}
