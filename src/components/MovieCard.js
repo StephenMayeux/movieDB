@@ -9,11 +9,11 @@ class MovieCard extends Component {
     super(props);
     const { title, genre, year, cast, rating } = props;
     this.state = {
-      titleEdit: title,
-      genreEdit: genre,
-      yearEdit: year,
-      castEdit: cast,
-      ratingEdit: rating,
+      title: title,
+      genre: genre,
+      year: year,
+      cast: cast,
+      rating: rating,
       showEdit: false,
       showDelete: false
     };
@@ -34,9 +34,9 @@ class MovieCard extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const { titleEdit, genreEdit, yearEdit, castEdit, ratingEdit } = this.state;
+    const { title, genre, year, cast, rating } = this.state;
     const { uuid } = this.props;
-    this.props.editMovie({ uuid, titleEdit, genreEdit, yearEdit, castEdit, ratingEdit });
+    this.props.editMovie({ uuid, title, genre, year, cast, rating });
     this.hideEdit();
   }
 
@@ -64,7 +64,6 @@ class MovieCard extends Component {
 
   render() {
     const { title, genre, year, cast, rating, uuid } = this.props;
-    const { titleEdit, genreEdit, yearEdit, castEdit, ratingEdit } = this.state;
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
@@ -106,9 +105,9 @@ class MovieCard extends Component {
                   <div className="form-group">
                     <label>Title</label>
                     <input
-                      value={titleEdit}
+                      value={this.state.title}
                       onChange={this.handleChange}
-                      name="titleEdit"
+                      name="title"
                       className="form-control"
                       type="text"
                       placeholder="Pulp Fiction"
@@ -117,9 +116,9 @@ class MovieCard extends Component {
                   <div className="form-group">
                     <label>Genre</label>
                     <select
-                      value={genreEdit}
+                      value={this.state.genre}
                       onChange={this.handleChange}
-                      name="genreEdit"
+                      name="genre"
                       className="form-control"
                     >
                       <option value="Action">Action</option>
@@ -133,9 +132,9 @@ class MovieCard extends Component {
                   <div className="form-group">
                     <label>Year</label>
                     <input
-                      value={yearEdit}
+                      value={this.state.year}
                       onChange={this.handleChange}
-                      name="yearEdit"
+                      name="year"
                       className="form-control"
                       type="text"
                       placeholder="1994"
@@ -144,9 +143,9 @@ class MovieCard extends Component {
                   <div className="form-group">
                     <label>Cast</label>
                     <input
-                      value={castEdit}
+                      value={this.state.cast}
                       onChange={this.handleChange}
-                      name="castEdit"
+                      name="cast"
                       className="form-control"
                       type="text"
                       placeholder="John Travolta, Samuel L Jackson"
@@ -155,9 +154,9 @@ class MovieCard extends Component {
                   <div className="form-group">
                     <label>Rating</label>
                     <select
-                      value={ratingEdit}
+                      value={this.state.rating}
                       onChange={this.handleChange}
-                      name="ratingEdit"
+                      name="rating"
                       className="form-control"
                     >
                       <option value="1">1</option>

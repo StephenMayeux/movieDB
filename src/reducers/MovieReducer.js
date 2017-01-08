@@ -8,7 +8,7 @@ const INITIAL_STATE = Lockr.get('InMotionMovies') || [];
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_MOVIE:
-      return [ ...state, action.payload ];
+      return [  action.payload, ...state ];
     case UPDATE_MOVIE:
       return [ ...action.payload ];
     case FILTER_MOVIES:

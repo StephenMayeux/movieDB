@@ -4,21 +4,14 @@ import { ADD_MOVIE, UPDATE_MOVIE, FILTER_MOVIES } from './types';
 
 const saveToStorage = (movie) => {
   let movies = Lockr.get('InMotionMovies') || [];
-  movies.push(movie);
+  movies.unshift(movie);
   Lockr.set('InMotionMovies', movies);
 };
 
-const editAndSaveToStorage = ({ uuid, titleEdit, genreEdit, yearEdit, castEdit, ratingEdit }) => {
+const editAndSaveToStorage = (afterUpdate) => {
   let movies = Lockr.get('InMotionMovies');
-  _.forEach(movies, movie => {
-    if (movie.uuid === uuid) {
-      movie.title = titleEdit;
-      movie.genre = genreEdit;
-      movie.year = yearEdit;
-      movie.cast = castEdit;
-      movie.rating = ratingEdit;
-    }
-  });
+  const beforeUpdate = _.find(movies, movie => movie.uuid === afterUpdate.uuid);
+  Object.assign(beforeUpdate, afterUpdate);
   Lockr.set('InMotionMovies', movies);
 };
 
@@ -38,8 +31,8 @@ export const saveMovie = (movie) => {
   };
 };
 
-export const editMovie = ({ uuid, titleEdit, genreEdit, yearEdit, castEdit, ratingEdit }) => {
-  editAndSaveToStorage({ uuid, titleEdit, genreEdit, yearEdit, castEdit, ratingEdit });
+export const editMovie = ({ uuid, title, genre, year, cast, rating }) => {
+  editAndSaveToStorage({ uuid, title, genre, year, cast, rating });
   return {
     type: UPDATE_MOVIE,
     payload: Lockr.get('InMotionMovies')
