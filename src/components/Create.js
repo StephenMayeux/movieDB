@@ -10,7 +10,7 @@ class Create extends Component {
     super(props);
     this.state = {
       title: '',
-      genre: 'Action',
+      genre: '',
       year: '',
       cast: '',
       rating: ''
